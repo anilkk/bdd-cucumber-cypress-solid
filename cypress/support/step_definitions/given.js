@@ -1,7 +1,7 @@
 import { Given } from 'cypress-cucumber-preprocessor/steps';
 
 Given('{word} is at her home', () => {
-  cy.visit('https://bdd-cucumber-demo.netlify.app/');
+  cy.visit(Cypress.env('PRODUCTION_PAGE_URL'));
 });
 
 Given("it's a {word}", (timeOfTheDay) => {

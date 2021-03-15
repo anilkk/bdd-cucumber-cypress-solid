@@ -90,3 +90,24 @@ Method `then` similar to JS promise, wait for the selector to be availble.
     $selector.click();
   });
 ```
+2. **Use env over hard coded values**
+
+### ❌ Bad pattern
+Hard coding value.
+```js 
+  cy.visit('https://bdd-cucumber-demo.netlify.app/');
+```
+
+### ✅ Good pattern
+Add variables to `env` property in `cypress.json` and access via `Cypress.env()` method.
+Method `then` similar to JS promise, wait for the selector to be availble. 
+```js 
+  cy.visit(Cypress.env('PRODUCTION_PAGE_URL'));
+```
+```json
+  {
+    "env": {
+      "PRODUCTION_PAGE_URL": "https://bdd-cucumber-demo.netlify.app/"
+    }
+  }
+```

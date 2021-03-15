@@ -1,4 +1,7 @@
 {
+  "env": {
+    "PRODUCTION_PAGE_URL": "https://bdd-cucumber-demo.netlify.app/"
+  },
   "testFiles": "**/*.feature",
   "firefoxGcInterval": null
 }
