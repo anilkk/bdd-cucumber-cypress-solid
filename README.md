@@ -10,27 +10,27 @@ E2E automation tests are written using [Cypress](https://www.cypress.io/) and ex
 
 ```gherkin
   Feature: Read the book
-
+  
   As Maria, I need a good light in order to read the book
-
+  
   Scenario: Maria should be able to read the book during the day without room light
     Given Maria is at her home
       And it's a morning
       And light is off
      Then she should be able to read the book
-
+  
   Scenario: Maria should be able to read the book during the day with room light on
     Given Maria is at her home
       And it's a morning
       And light is on
      Then she should be able to read the book
-
+  
   Scenario: Maria should not be able to read the book during the night
     Given Maria is at her home
       And it's a night
       And light is off
      Then she should not be able to read the book
-
+  
   Scenario: Maria should be able to read book during the night
     Given Maria is at her home
       And it's a night
@@ -38,6 +38,18 @@ E2E automation tests are written using [Cypress](https://www.cypress.io/) and ex
      When she switch on the light
      Then she should be able to read the book
 
+  Scenario Outline: Maria should be able to read book during the night with light color <light_color>
+    Given Maria is at her home
+      And it's a night
+      And light is off
+    When she switch on the light with <light_color>
+    Then she should be able to read the book
+
+    Examples: 
+      | light_color | 
+      | yellow      | 
+      | red         | 
+      | orange      | 
 ```
 
 ## How to run Cypress e2e test locally
@@ -57,4 +69,24 @@ or if you want run with Cypress interactive window
 
 ```shell
 npm run cypress-open
+```
+
+
+## Patterns 
+Here are the list of bad and good patterns 
+
+1. **Trgigger click**
+
+### ❌ Bad pattern
+Sometimes the $selector is not availble immediatly. You get error selector not availble. 
+```js 
+  cy.get($selector).click();
+```
+
+### ✅ Good pattern
+Method `then` similar to JS promise, wait for the selector to be availble. 
+```js 
+  cy.get(selector).then(async ($selector) => {
+    $selector.click();
+  });
 ```
