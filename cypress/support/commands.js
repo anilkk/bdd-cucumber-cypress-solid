@@ -27,5 +27,11 @@
 
 // getBySel yields elements with a test-data attribute that match a specified selector.
 Cypress.Commands.add("getBySel", (selector, ...args) => {
-    return cy.get(`[test-data=${selector}]`, ...args);
+    return cy.get(`[test-data="${selector}"]`, ...args);
+  });
+
+// getBySel yields elements with a test-data attribute that match a specified selector.
+Cypress.Commands.add("findBySel", (selector, ...args) => {
+    // then waits till element availble
+    return cy.get('body').then($body => $body.find(`[test-data="${selector}"]`, ...args));
   });

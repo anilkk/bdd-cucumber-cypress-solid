@@ -6,20 +6,12 @@ Given('{word} is at her home', () => {
 
 Given("it's a {word}", (timeOfTheDay) => {
   cy.get('body').then(($el) => {
-    if (
-      timeOfTheDay === 'morning' &&
-      $el.find(`[test-data="day"]`).length === 0
-    ) {
-      // cy.get('[test-data="night"]').then(async ($daySelectButton) => {
+    if (timeOfTheDay === 'morning' && cy.findBySel('day').length === 0) {
       cy.getBySel('night').then(async ($daySelectButton) => {
         $daySelectButton.click();
       });
     } else {
-      if (
-        timeOfTheDay === 'night' &&
-        $el.find(`[test-data="night"]`).length === 0
-      ) {
-        // cy.get('[test-data="day"]').then(async ($daySelectButton) => {
+      if (timeOfTheDay === 'night' && cy.findBySel('night').length === 0) {
         cy.getBySel('day').then(async ($daySelectButton) => {
           $daySelectButton.click();
         });
