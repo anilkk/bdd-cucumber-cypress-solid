@@ -10,7 +10,8 @@ Given("it's a {word}", (timeOfTheDay) => {
       timeOfTheDay === 'morning' &&
       $el.find(`[test-data="day"]`).length === 0
     ) {
-      cy.get('[test-data="night"]').then(async ($daySelectButton) => {
+      // cy.get('[test-data="night"]').then(async ($daySelectButton) => {
+      cy.getBySel('night').then(async ($daySelectButton) => {
         $daySelectButton.click();
       });
     } else {
@@ -18,7 +19,8 @@ Given("it's a {word}", (timeOfTheDay) => {
         timeOfTheDay === 'night' &&
         $el.find(`[test-data="night"]`).length === 0
       ) {
-        cy.get('[test-data="day"]').then(async ($daySelectButton) => {
+        // cy.get('[test-data="day"]').then(async ($daySelectButton) => {
+        cy.getBySel('day').then(async ($daySelectButton) => {
           $daySelectButton.click();
         });
       }
