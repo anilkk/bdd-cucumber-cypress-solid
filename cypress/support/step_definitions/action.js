@@ -18,12 +18,12 @@ const click = (selector) => {
 // she switch on the light
 When('she switch on the light', () => {
   cy
-  .get(`[test-data="light-off"]`)
+  .get(`[data-test="light-off"]`)
   .should(($el) => {
     expect($el).to.have.length(1)
   })
   .then(() => {
-    click('[test-data="light-off"]');
+    click('[data-test="light-off"]');
   });
 });
 
@@ -32,12 +32,12 @@ When('she switch on the light', () => {
 When('she switch on the light with {word}', (lightColor) => {
 
   cy
-  .get(`[test-data="light-off"]`)
+  .get(`[data-test="light-off"]`)
   .should(($el) => {
     expect($el).to.have.length(1)
   })
   .then(() => {
     click(`input[value="${lightColor}"]`);
-    click('[test-data="light-off"]');
+    click('[data-test="light-off"]');
   })
 });
