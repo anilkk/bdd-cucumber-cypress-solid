@@ -1,6 +1,6 @@
 {
   "env": {
-    "PRODUCTION_PAGE_URL": "https://bdd-cucumber-demo.netlify.app/"
+    "PRODUCTION_PAGE_URL": "https://bdd-cypress-solid-demo.netlify.app/"
   },
   "retries": {
     "runMode": 2,
